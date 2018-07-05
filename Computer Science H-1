@@ -1,0 +1,54 @@
+//--------------------------------------------------------
+//--Author: Micheal Wade Harrison
+//--Date: January 23, 1998
+//--Course: Computer Science H-1
+//--Purpose: To modify the code degement of Exercise 4
+//-- so that each circle is randomly chosen color (use
+//-- the random number generator discussed in Section 
+//-- 3.6)
+//--------------------------------------------------------
+#include<iostream.h>
+#include<graphics.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<time.h>
+#include<math.h>
+
+int main()
+{
+     int center_x, center_y, radius;
+
+//-- Obtain input information from the user
+
+cout<<"Please enter the center x coordinate: ";
+cin>>center_x;
+cout<<"Please enter the cetner y coordiante: ";
+cin>>center_y;
+cout<<"Please enter the radius: ";
+cin>>radius;
+
+//--Set the graphics mode
+
+int graphdrive=DETECT, graphmode;
+initgraph(&graphdriver, &graphmode, "c:..\\bgi");
+
+//--Draw the three concentric circles and change the forground color
+
+circle(center_x, center_y, radius);
+setcolor(rand()%15+1);
+circle(center_x, center_y, radius * 4);
+setcolor(rand()%15+1);
+circle(center_x, center_y, radius * 8);
+setcolor(rand()%15+1);
+
+//-- Pause for a key to be pressed
+
+moveto(100,250);
+outtext("Strike any key to continue");
+getch();
+
+//-- Close the graphics mode
+
+closegraph();
+return 0;
+}
